@@ -11,4 +11,4 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka:8761/eureka/
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: true # 解决k8s docker解析不出域名
