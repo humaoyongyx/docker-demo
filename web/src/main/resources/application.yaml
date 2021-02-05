@@ -3,7 +3,7 @@ spring:
     discovery:
       enabled: true
   application:
-    name: service
+    name: web
 server:
   port: 8080
 eureka:
