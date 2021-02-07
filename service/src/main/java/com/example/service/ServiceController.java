@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 /**
  * @author issac.hu
@@ -12,8 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping
 public class ServiceController {
 
+    private String uuid = UUID.randomUUID().toString();
+
     @RequestMapping
     public String get(HttpServletRequest request) {
-        return request.getServerName() + ":" + request.getServerPort();
+        return request.getServerName() + ":" + request.getServerPort() + "" + uuid;
     }
 }
