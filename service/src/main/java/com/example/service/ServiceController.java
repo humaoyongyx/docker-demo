@@ -17,6 +17,7 @@ public class ServiceController {
 
     @RequestMapping
     public String get(HttpServletRequest request) {
-        return request.getServerName() + ":" + request.getServerPort() + "" + uuid;
+        System.out.println("get..." + uuid);
+        return request.getServerName() + ":" + request.getServerPort() + ":" + uuid;
     }
 }

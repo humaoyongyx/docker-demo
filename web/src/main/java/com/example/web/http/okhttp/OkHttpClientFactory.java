@@ -54,7 +54,7 @@ public class OkHttpClientFactory {
                 .sslSocketFactory(sslContext.getSocketFactory(), defaultTrustManager)
                 .hostnameVerifier(new TrustAnyHostnameVerifier())
                 .retryOnConnectionFailure(true) // 连接失败是否重试
-                //连接池设置
+                //连接池设置，这里会复用连接，注意在同一个域名下的时候，okhttp可能会对一个连接进行复用，这里的时间会设置为keepalive的时间，可能会导致一些请求负载均衡失效。如k8s的service
                 .connectionPool(new ConnectionPool(10, 5, TimeUnit.MINUTES)) //默认5个连接 5分钟
                 //连接时间设置 对应socket的connect / read / write
                 .connectTimeout(10L, TimeUnit.SECONDS) //默认10s
