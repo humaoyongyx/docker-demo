@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author issac.hu
@@ -40,6 +42,18 @@ public class WebController {
         //设置nginx路由
         //String result = HttpHelper.client().get("http://localhost/service/");
         String result = HttpHelper.client().get("http://service/");
+        return result;
+    }
+
+    @RequestMapping("/33")
+    public String get33(HttpServletRequest request) {
+        LOGGER.info("get33...");
+        //设置nginx路由
+        //String result = HttpHelper.client().get("http://localhost/service/");
+        Map<String, String> headers = new HashMap<>();
+        //修改为短链接，禁止okhttp启用多路复用
+        headers.put("Connection", "close");
+        String result = HttpHelper.client().get("http://service/", null, headers);
         return result;
     }
 
