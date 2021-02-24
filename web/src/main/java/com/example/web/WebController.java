@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 
 /**
  * @author issac.hu
@@ -44,6 +45,12 @@ public class WebController {
     @RequestMapping("/r/{path}")
     public String getR(HttpServletRequest request, @PathVariable(value = "path", required = false) String path) {
         LOGGER.info("getR...");
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String header = headerNames.nextElement();
+            String value = request.getHeader(header);
+            System.out.println("header:" + header + ",value:" + value);
+        }
         String result = HttpUtil.get("http://service/" + path);
         return result;
     }
