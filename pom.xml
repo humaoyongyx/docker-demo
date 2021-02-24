@@ -21,7 +21,6 @@
     </properties>
 
     <modules>
-        <module>eureka</module>
         <module>web</module>
         <module>service</module>
     </modules>
