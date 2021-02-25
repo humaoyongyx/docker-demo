@@ -44,12 +44,14 @@ public class WebController {
 
     @RequestMapping("/r/{path}")
     public String getR(HttpServletRequest request, @PathVariable(value = "path", required = false) String path) {
-        LOGGER.info("getR...");
+        LOGGER.info("getRRR...");
         Enumeration<String> headerNames = request.getHeaderNames();
+        LOGGER.info(headerNames.toString());
         while (headerNames.hasMoreElements()) {
             String header = headerNames.nextElement();
             String value = request.getHeader(header);
             System.out.println("header:" + header + ",value:" + value);
+            LOGGER.info("header:" + header + ",value:" + value);
         }
         String result = HttpUtil.get("http://service/" + path);
         return result;
